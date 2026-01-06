@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandana KP - Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Header Section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(45deg, rgba(0,191,255,0.1), rgba(138,43,226,0.1));
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #00bfff;
+            opacity: 0.8;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: #00bfff;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #8a2be2;
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00bfff; }
+            to { text-shadow: 0 0 30px #8a2be2, 0 0 40px #8a2be2; }
+        }
+
+
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(0,191,255,0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Projects Gallery */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(0,0,0,0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0,191,255,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,191,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #00bfff;
+            box-shadow: 0 10px 30px rgba(0,191,255,0.3);
+        }
+
+        .project-card h3 {
+            color: #00bfff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .github-icon:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-card li {
+            padding: 0.5rem 0;
+            color: rgba(255,255,255,0.8);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #8a2be2;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: rgba(0,0,0,0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0,191,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: #00bfff;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #00bfff;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+            color: #8a2be2;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00bfff, #8a2be2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,191,255,0.3);
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,191,255,0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.8);
+            padding: 2rem;
+            text-align: left;
+            border-top: 1px solid rgba(0,191,255,0.3);
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1rem;
+        }
+
+        /* Resume Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 2% auto;
+            width: 90%;
+            max-width: 800px;
+            height: 90vh;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #00bfff;
+            font-size: 35px;
+            font-weight: bold;
+            z-index: 2001;
+            cursor: pointer;
+            background: rgba(0,0,0,0.7);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover {
+            color: #8a2be2;
+        }
+
+        .resume-content {
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            overflow-y: auto;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 2rem 1rem;
+            }
+            
+            .content-container {
+                padding: 2rem;
+            }
+            
+            .social-links a {
+                display: inline-block;
+                margin: 0 1rem;
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+
+
+    <!-- Header Section -->
+    <section class="header">
+        <h1>Hi, It's me Nandana</h1>
+        <h2>Cybersecurity Analyst | Ethical Hacker</h2>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/nandana-kp-a96789352" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Nandu768" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+        <p class="intro-text">
+            Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing.
+        </p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="content-container">
+            <div class="about-content">
+                <p>I am a passionate cybersecurity professional currently working as a Security Analyst Trainee at Keralavision Broadband Ltd, Thrissur. With a strong educational background in Cyber Security & Ethical Hacking (M.Sc.) and Forensic Science (B.Sc.), I bring both theoretical knowledge and practical experience to the field.</p>
+                <br>
+                <p>My expertise spans across vulnerability assessments, penetration testing, network analysis, and threat detection. I'm committed to ensuring system and network security through continuous monitoring, analysis, and testing. I believe in staying updated with the latest cybersecurity trends and continuously improving my skills to tackle emerging threats.</p>
+                <br>
+                <p>Currently pursuing my CEH (Certified Ethical Hacker) certification and always eager to take on new challenges in the cybersecurity domain.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Project Gallery</h2>
+        <div class="content-container">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Streamflix-Secure System 
+                        <a href="https://github.com/Nandu768/streamflix-auth-app" target="_blank">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
+                        </a>
+                    </h3>
+                    <ul>
+                        <li>Designed secure streaming web system using Python and Streamlit</li>
+                        <li>Implemented MFA login authentication for strong access control</li>
+                        <li>Integrated secure payment features with validation and encryption</li>
+                        <li>Built admin panel to monitor access logs and user activity</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h3>AI-Powered Network Traffic Analysis 
+                        <a href="https://github.com/Nandu768/shadownet_final" target="_blank">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
+                        </a>
+                    </h3>
+                    <ul>
+                        <li>Developed real-time network traffic analysis using machine learning</li>
+                        <li>Detected DDoS and insider threats using supervised models</li>
+                        <li>Integrated Wireshark for live packet capture and analysis</li>
+                        <li>Deployed Streamlit dashboard for visualizing anomalies</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Secure Event Management Web App 
+                        <a href="https://github.com/Nandu768/Event-Management-Website" target="_blank">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
+                        </a>
+                    </h3>
+                    <ul>
+                        <li>Built PHP-based web portal with role-based access control</li>
+                        <li>Conducted penetration testing using Burp Suite and OWASP ZAP</li>
+                        <li>Hardened app against SQL Injection, XSS, and CSRF</li>
+                        <li>Implemented server-side logging and anomaly detection</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h3>Windows-Based Keylogger 
+                        <a href="https://github.com/Nandu768/keylogger" target="_blank">
+                            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="github-icon">
+                        </a>
+                    </h3>
+                    <ul>
+                        <li>Created Python-based keylogger for malware behavior simulation</li>
+                        <li>Enabled stealth mode and persistence through registry modification</li>
+                        <li>Incorporated anti-debugging techniques for evasion</li>
+                        <li>Demonstrated ethical use for training and analysis purposes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Information</h2>
+        <div class="content-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>nandanaedu5@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+91 7034531699</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Kerala, India<br>Willing to Relocate</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="resume-btn" onclick="openResumeModal()">
+                    <i class="fas fa-file-pdf"></i> View Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with 💙 Nandana KP &copy; 2025. All rights reserved.</p>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeResumeModal()">&times;</span>
+            <div class="resume-content">
+                <h1 style="color: #00bfff; text-align: center;">NANDANA KP</h1>
+                <p style="text-align: center; color: #666;">
+                    nandanaedu5@gmail.com – +91 7034531699<br>
+                    <a href="https://www.linkedin.com/in/nandana-kp-a96789352" style="color: #0077b5; text-decoration: none;" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a> | 
+                    <a href="https://github.com/Nandu768" style="color: #333; text-decoration: none;" target="_blank"><i class="fab fa-github"></i> GitHub</a><br>
+                    Kerala, India - Willing to Relocate
+                </p>
+                
+                <h2 style="color: #8a2be2;">Professional Summary</h2>
+                <p>Enthusiastic and detail-oriented Cybersecurity Analyst with hands-on experience in vulnerability assessment, penetration testing, and threat detection. Strong foundation in networking concepts such as TCP/IP, routing, firewalls, and DNS. Skilled in using tools like Nessus, Wireshark, Burp Suite, and OWASP ZAP for network and web penetration testing.</p>
+                
+                <h2 style="color: #8a2be2;">Experience</h2>
+                <h3 style="color: #00bfff;">Security Analyst Trainee</h3>
+                <p><strong>Apr 2025 – Present | Keralavision Broadband Ltd, Thrissur</strong></p>
+                <ul>
+                    <li>Conducted vulnerability assessments using OpenVAS and OWASP ZAP on internal portals</li>
+                    <li>Analyzed network logs and threat indicators using SIEM tools and Wireshark</li>
+                    <li>Performed regular port scanning, firmware checks, and packet inspection on routers and switches</li>
+                    <li>Conducted web application penetration testing on internal assets</li>
+                    <li>Collaborated cross-functionally with teams to analyze product risks and highlight cyber threats</li>
+                </ul>
+                
+                <h2 style="color: #8a2be2;">Education</h2>
+                <p><strong>M.Sc. in Cyber Security & Ethical Hacking</strong><br>2023 – 2025 | Yenepoya University, Mangalore | CGPA: 9.0/10</p>
+                <p><strong>B.Sc. in Forensic Science, Chemistry, Genetics</strong><br>2019 – 2022 | Garden City University, Bangalore | CGPA: 9.1/10</p>
+                
+                <h2 style="color: #8a2be2;">Key Skills</h2>
+                <p><strong>Penetration Testing:</strong> Burp Suite, OWASP ZAP, Nessus, Nikto, OpenVAS, Metasploit, Cobalt Strike</p>
+                <p><strong>Red Teaming:</strong> Active Directory assessments, Privilege escalation, Lateral movement, Evasion techniques, Phishing, Vishing, BloodHound</p>
+                <p><strong>Cloud Security:</strong> AWS, Azure, GCP assessments, Kubernetes testing, Docker security</p>
+                <p><strong>Programming:</strong> Python, Bash, PowerShell, JavaScript, SQL, HTML, PHP</p>
+                <p><strong>Tools:</strong> Nmap, Wireshark, SQLmap, Mimikatz, Responder, Postman, mitmproxy, Yara</p>
+                <p><strong>Monitoring & Analysis:</strong> SIEM, Splunk, Wireshark, EDR, IDS/IPS, Log Analysis</p>
+                <p><strong>DevOps & Containers:</strong> Docker, Kubernetes, CI/CD pipelines, Infrastructure security</p>
+                <p><strong>Platforms:</strong> Windows, Linux (Kali, Ubuntu), Cloud environments</p>
+
+                
+                <h2 style="color: #8a2be2;">Certifications</h2>
+                <ul>
+                    <li>Cybersecurity Internship – Cyber Police Station, Malappuram</li>
+                    <li>Cybersecurity Tools & Attacks – IBM (Coursera)</li>
+                    <li>SQL Injection Attack – EC-Council</li>
+                    <li>Fortinet Certified Fundamentals – FCF 3.0</li>
+                    <li>CEH (Certified Ethical Hacker) – Pursuing</li>
+                </ul>
+                
+                <h2 style="color: #8a2be2;">Languages</h2>
+                <p>English, Malayalam, Hindi, Tamil, Kannada</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Particles.js Configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#00bfff" },
+                shape: {
+                    type: "circle",
+                    stroke: { width: 0, color: "#000000" },
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: { enable: false }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: { enable: false }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00bfff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 3,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, line_linked: { opacity: 1 } },
+                    push: { particles_nb: 4 },
+                    remove: { particles_nb: 2 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Resume Modal Functions
+        function openResumeModal() {
+            document.getElementById('resumeModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resumeModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('resumeModal');
+            if (event.target == modal) {
+                closeResumeModal();
+            }
+        }
+    </script>
+</body>
+</html>
